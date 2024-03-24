@@ -86,7 +86,7 @@ const Topbar = ({
           <GrPowerReset className="h-4 w-4 mr-2" />
           Reset
         </Button>
-        <Button className="h-8" onClick={handleExecute}>
+        <Button className={`h-8 ${loading && 'opacity-60 pointer-events-none'}`} onClick={handleExecute}>
           {loading ? (
             <Spinner className="h-4 w-4 mr-2 animate-spin" />
           ) : (

@@ -8,10 +8,11 @@ import {
 import Inputbox from "./Inputbox";
 import Outputbox from "./Outputbox";
 import Topbar from "./Topbar";
+import { templates } from "@/templates";
 
 const CodeEditor = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("javascript");
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState(templates["javascript"]);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState(null);
 

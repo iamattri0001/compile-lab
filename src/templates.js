@@ -1,9 +1,9 @@
 export const templates = {
-  "c++": `#include <iostream>
+  "c++": `#include <bits/stdc++.h>
 using namespace std;
 
 int main() {
-  cout << "Hello, world!" << std::endl;  
+  cout << "Hello, world!" << endl;  
   return 0;
 }
     `,
