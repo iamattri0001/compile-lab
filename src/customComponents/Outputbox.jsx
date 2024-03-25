@@ -6,16 +6,16 @@ const Outputbox = ({ output }) => {
 
   useEffect(() => {
     if (output) {
+      console.log(output);
       if (output?.compile?.stderr) {
         setError("Compilation error");
-        console.log(output.compile.output);
-        setOutputData(output?.compile?.output.split("\n"));
+        setOutputData(output?.compile?.output?.split("\n"));
       } else if (output?.run?.stderr) {
         setError("Runtime error");
-        setOutputData(output?.run?.output.split("\n"));
+        setOutputData(output?.run?.output?.split("\n"));
       } else {
         setError(false);
-        setOutputData(output.run.output.split("\n"));
+        setOutputData(output?.run?.output?.split("\n"));
       }
     }
   }, [output]);

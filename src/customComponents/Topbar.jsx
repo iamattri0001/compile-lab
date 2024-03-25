@@ -7,6 +7,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 import React, { useEffect, useState } from "react";
 import useLanguage from "@/hooks/useLanguage";
 import { Button } from "@/components/ui/button";
@@ -78,15 +90,33 @@ const Topbar = ({
         <Button variant="ghost" size="icon" title="Shortcuts">
           <IoIosKeypad className="h-6 w-6" />
         </Button>
+        <AlertDialog>
+          <AlertDialogTrigger>
+            <Button variant="secondary" className="h-8">
+              <GrPowerReset className="h-4 w-4 mr-2" />
+              Reset
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>
+                Are you sure that you want to reset?
+              </AlertDialogTitle>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction
+                onClick={() => setCode(templates[selectedLanguage])}
+              >
+                Continue
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
         <Button
-          variant="secondary"
-          className="h-8"
-          onClick={() => setCode(templates[selectedLanguage])}
+          className={`h-8 ${loading && "opacity-60 pointer-events-none"}`}
+          onClick={handleExecute}
         >
-          <GrPowerReset className="h-4 w-4 mr-2" />
-          Reset
-        </Button>
-        <Button className={`h-8 ${loading && 'opacity-60 pointer-events-none'}`} onClick={handleExecute}>
           {loading ? (
             <Spinner className="h-4 w-4 mr-2 animate-spin" />
           ) : (
@@ -100,3 +130,5 @@ const Topbar = ({
 };
 
 export default Topbar;
+
+const ClearDialog = () => {};
